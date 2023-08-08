@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ParSe v2 - potentials</title>
+    <meta name="description" content="">
+
+    <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" rel="stylesheet">
+    <link href="https://unpkg.com/tabulator-tables@5.4.3/dist/css/tabulator.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+
+<body>
+    <div id="loading" class="loading-overlay">
+        <div id="loading-text" class="loading-text">Loading</div>
+    </div>
+
+    <main>
+        <h1>ParSe v2: predict phase separation potential from the primary sequence</h1>
+        <p>This form allows you to enter a set of sequences and quickly compute a sequence-based prediction of the phase separation potential for each using ParSe v2. The algorithm is described in <a href="https://doi.org/10.1016/j.jbc.2022.102801"><i>J. Biol. Chem.</i> <b>299</b>, 102801 (2023)</a>.</p>
+
+            <h3>Input File</h3>
+
+            <p>Input a <a href="https://en.wikipedia.org/wiki/FASTA_format">FASTA</a> file containing protein sequences, preferably in the <a href="https://www.uniprot.org/help/fasta-headers">UniProtKB</a> format. The algorithm ignores sequences longer than 10,000 residues or shorter than 25 residues.</p>
+
+            <div class="mb-10">
+                <label for="input-file">File: </label>
+                <input id="input-file" type="file" accept=".txt, .fasta" />
+            </div>
+
+            <div class="mb-10">
+                <label for="proteome-name">Name for the file (optional): </label>
+                <br/>
+                <input id="proteome-name" />
+            </div>
+
+            <div class="mb-10">
+                <button id="submit">Submit</button>
+            </div>
+        
+            <div class="mb-10">
+            <label for="download-summary-csv-b"><b>Phase separation potential, predicted with and without <i>U<sub>π</sub></i> + <i>U<sub>q</sub></i> </b>: </label>
+                <button id="download-summary-csv-b">Download CSV</button>
+            </div>
+            <div class="mb-10" id="summary-b"></div>
+                        
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"
+        integrity="sha512-EAKzSKex+PXC0U9OG13r1059ysjrjkJEpZoONCnZa0mBROY28iBOOxZSErUVw1LzLr2+U5PhR7zPCPKidUVJqg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.4.3/dist/js/tabulator.min.js"></script>
+    <script src="./js/part-a.js"></script>
+    <script src="./js/part-b.js"></script>
+    <script src="./js/constants.js"></script>
+    <script src="./js/parse.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
